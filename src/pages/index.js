@@ -4,6 +4,9 @@ import Image from 'next/image';
 import profilePic from '../../public/images/profile/adgedoutlogo.png';
 import AnimatedText from '@/components/AnimatedText';
 import Link from 'next/link';
+import { LinkArrow } from '@/components/Icons';
+import HireMe from '@/components/HireMe';
+import lightBulb from '../../public/images/svgs/miscellaneous_icons_1.svg';
 
 export default function Home() {
   return (
@@ -46,13 +49,23 @@ export default function Home() {
                 "
                   download={true}
                 >
-                  RESUME
+                  RESUME <LinkArrow className={'w-6 m1-1'} />
                 </Link>
-                <Link href="mailto:s.hasan@unguarded.com">CONTACT</Link>
+                <Link
+                  href="mailto:s.hasan@unguarded.com"
+                  target={'_blank'}
+                  className="ml-4 text-lg font-medium capitalize text-dark underline"
+                >
+                  CONTACT
+                </Link>
               </div>
             </div>
           </div>
         </Layout>
+        <HireMe />
+        <div>
+          <Image src={lightBulb} alt="Codebucks" className="w-full h-auto" />
+        </div>
       </main>
     </>
   );
