@@ -5,6 +5,7 @@ import React from 'react';
 import profilePic from '../../public/images/profile/SHB.png';
 import Image from 'next/image';
 import { useInView, useMotionValue, useSpring } from 'framer-motion';
+import Skills from '@/components/Skills';
 
 const AnimatedNumbers = ({ value }) => {
   const ref = useRef(null);
@@ -15,9 +16,15 @@ const AnimatedNumbers = ({ value }) => {
 
   useEffect(() => {
     if (isInView) {
-      motionValue;
+      motionValue.set(value);
     }
-  }, []);
+  }, [isInView, value, motionValue]);
+
+  useEffect(() => {
+    springValue.on('Change', (latest) => {
+      console.log(latest);
+    });
+  }, [springValue, value]);
 
   return <span ref={ref}></span>;
 };
@@ -91,6 +98,7 @@ const about = () => {
               </div>
             </div>
           </div>
+          <Skills />
         </Layout>
       </main>
     </>
